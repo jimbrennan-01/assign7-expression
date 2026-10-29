@@ -1,6 +1,6 @@
 package assignment;
 
-public class Stack implements StackInterface{
+public class Stack<T> implements StackInterface{
 	Node head;
 	
 	public Stack() {
