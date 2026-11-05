@@ -1,29 +1,37 @@
 package assignment;
 
-public class Stack<T> implements StackInterface{
-	Node head;
+import java.util.EmptyStackException;
+
+public class Stack<T> implements StackInterface<T>{
+	Node<T> head;
+	int size;
 	
 	public Stack() {
 		this.head = null;
 	}
 	
 	@Override
-	public void push(Object item) {
-		Node newNode = new Node(item);
+	public void push(T item) {
+		Node<T> newNode = new Node<>(item);
 		newNode.next = this.head;
 		this.head = newNode;
+		size++;
 	}
 
 	@Override
-	public Object pop() {
-		Node node = this.head;
+	public T pop() {
+		if (this.head == null) throw new EmptyStackException();
+		Node<T> node = this.head;
 		this.head = this.head.next;
-		return node;
+		size--;
+		return (T) node.obj;
 	}
 
 	@Override
-	public Object peek() {
-		return this.head;
+	public T peek() {
+		if (this.head == null) throw new EmptyStackException();
+
+		return (T) this.head.obj;
 	}
 
 	@Override
@@ -36,13 +44,7 @@ public class Stack<T> implements StackInterface{
 
 	@Override
 	public int size() {
-		int count = 0;
-		Node curNode = this.head;
-		while(this.head != null) {
-			count++;
-			curNode = curNode.next;
-		}
-		return count;
+		return this.size;
 	}
 
 }

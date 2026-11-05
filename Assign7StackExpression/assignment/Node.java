@@ -1,12 +1,12 @@
 package assignment;
 
-public class Node {
-	Object obj;
-	Node next;
+public class Node<T>{
+	T obj;
+	Node<T> next;
 	
 	public Node() {}
 	
-	public Node(Object obj) {
+	public Node(T obj) {
 		this.obj = obj;
 		this.next = null;
 	}

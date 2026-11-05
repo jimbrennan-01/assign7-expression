@@ -2,16 +2,49 @@ package assignment;
 
 public class Driver implements ExpressionEvaluatorInterface{
     public static void main(String[] args) {
-      String infix = "(5 + 3)/(2 + 2)";
+      String infix = "(5+3)/(2+2)";
+      
+      Stack<String> stack = new Stack<String>();
+      
+      stack.push("A");
+      System.out.println(stack.pop());
+      
+      
+      
     }
 
 	@Override
 	public String infixToPostfix(String infix) {
-		Stack stack = new Stack();
+		Stack<Character> stack = new Stack<Character>();
+		StringBuilder sb = new StringBuilder();
 		
 		for(int i = 0; i < infix.length(); i++) {
-			Node node = new Node(infix.charAt(i));
-			stack.push(node);
+			stack.push(infix.charAt(i));
+		}
+		
+		
+		while(stack.peek() != null) {
+			if(stack.peek() == ')') {
+				
+			}
+			if(stack.peek() == '(') {
+				
+			}
+			if(stack.peek() == '+') {
+				
+			}
+			if(stack.peek() == '-') {
+				
+			}
+			if(stack.peek() == '/') {
+				
+			}
+			if(stack.peek() == '*') {
+				
+			}
+			if(Character.isDigit(stack.peek())) {
+				sb.append(stack.pop());
+			}
 		}
 		
 		return null;
